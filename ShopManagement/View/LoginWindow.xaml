@@ -1,0 +1,57 @@
+﻿<Window x:Class="ShopManagement.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShopManagement"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        SizeToContent="Height"
+        Title="Login" Width="320">
+    <Window.Resources>
+        <Style x:Key="RoundedBtn" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="button">
+                            <Grid>
+                                <Border>
+                                    <TextBlock x:Name="textBlock" Margin="-1" TextWrapping="Wrap" 
+                                           FontSize="13" TextDecorations="{x:Null}"><ContentPresenter />
+                                    </TextBlock>
+                                </Border>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True" >
+                                <Setter TargetName="textBlock" Property="TextBlock.TextDecorations" Value="Underline" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidBrush}" />
+        </Style>
+    </Window.Resources>
+    <DockPanel>
+        <StackPanel HorizontalAlignment="Stretch" Margin="16,16,16,20">
+           <TextBlock Text="Login" Margin="80,0,0,0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+           <DockPanel Margin="0,12,0,0">
+                <Label DockPanel.Dock="Left" Width="80" Content="Username:" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0" Target="{Binding ElementName=usernameTextbox}" Style="{StaticResource MaterialDesignLabel}"/>
+                <TextBox x:Name="usernameTextbox" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Padding="5, 0, 5, 0" Height="30" Style="{StaticResource MaterialDesignOutlinedTextBox}"  />
+            </DockPanel>
+            <DockPanel Margin="0, 12,0,0">
+                <Label DockPanel.Dock="Left" Width="80" Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0" Target="{Binding ElementName=passwordBox}" Style="{StaticResource MaterialDesignLabel}" />
+                <PasswordBox x:Name="passwordBox" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Padding="5, 0, 5, 0" Height="30" Style="{StaticResource MaterialDesignOutlinedPasswordBox}" />
+            </DockPanel>
+            <StackPanel  Margin="80,12,0,0">
+                <CheckBox x:Name="rememberPasswordCheckbox" Content="Remember password"></CheckBox>
+            </StackPanel>
+            <Button x:Name="loginButton" Click="loginButton_Click" Content="Login" HorizontalAlignment="Left" Margin="80,20,0,0" ></Button>
+
+            <Button Margin="80,12,0,0" Content="Server settings" Cursor="Hand" x:Name="serverSettingButton" Click="serverSettingsButton_Click" Style="{StaticResource RoundedBtn}">
+               
+            </Button>
+        </StackPanel>
+    </DockPanel>
+</Window>

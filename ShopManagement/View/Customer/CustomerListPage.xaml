@@ -1,0 +1,77 @@
+﻿<Page x:Class="ShopManagement.CustomerListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ShopManagement"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CustomerListPage"
+      Loaded="Page_Loaded"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     xmlns:uc="clr-namespace:ShopManagement.Utils"
+     >
+    <StackPanel Margin="12,12,12,12">
+        <DockPanel  HorizontalAlignment="Stretch">
+            <TextBlock Style="{StaticResource MaterialDesignHeadline5TextBlock}" HorizontalAlignment="Stretch">
+                <Run x:Name="listCounter" d:Text="5" Text="{Binding PagedResult.RowCount}"></Run><Run Text=" record(s)"></Run>
+            </TextBlock>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}" x:Name="SearchBox" Text="{Binding Keyword}" Width="200" Padding="6" Height="32"></TextBox>
+                <Button Click="SearchButton_Click" Margin="4,0,0,0" Style="{StaticResource MaterialDesignOutlinedButton}">Search</Button>
+                <Button Click="AddButton_Click" Margin="24,0,0,0">Add</Button>
+            </StackPanel>
+        </DockPanel>
+        <StackPanel HorizontalAlignment="Center" Visibility="{Binding ShowLoader}" Margin="0,16,0,10">
+            <ProgressBar
+                IsIndeterminate="True"
+                Style="{StaticResource MaterialDesignCircularProgressBar}"
+            />
+        </StackPanel>
+        <StackPanel Visibility="{Binding ShowResults}" Margin="0,16,0,10">
+            <DataGrid CanUserAddRows="False" AutoGenerateColumns="False" x:Name="dataGrid" IsReadOnly="True" ItemsSource="{Binding Path=PagedResult.Results, Mode=TwoWay}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Address}" Width="*"/>
+                    <DataGridTextColumn Header="Phone" Binding="{Binding Phone}" Width="*"/>
+                    <DataGridTemplateColumn Header="Action">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button
+                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                Style="{StaticResource MaterialDesignIconForegroundButton}"
+                                Padding="2,2,2,2"
+                                Width="20"
+                                ToolTip="Delete"
+                                Height="20"
+                                Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                Tag="{Binding}"
+                                Click="EditButton_Click"
+                            >
+                                        <materialDesign:PackIcon  Width="16" Height="16" Kind="Pencil" />
+                                    </Button>
+                                    <Button
+                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                Style="{StaticResource MaterialDesignIconForegroundButton}"
+                                Padding="2,2,2,2"
+                                Width="20"
+                                ToolTip="Delete"
+                                Height="20"
+                                Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                Tag="{Binding}"
+                                Click="DeleteButton_Click"
+                            >
+                                        <materialDesign:PackIcon  Width="16" Height="16" Kind="Trash" />
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <uc:Pager Margin="0,16,0,0" PagedResult="{Binding PagedResult}" PageChanged="CurrentPage_Changed"/>
+        </StackPanel>
+    </StackPanel>
+</Page>

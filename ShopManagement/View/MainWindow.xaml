@@ -1,0 +1,107 @@
+﻿<Window x:Class="ShopManagement.View.MainWindow"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:local="clr-namespace:ShopManagement.View" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+mc:Ignorable="d"
+Title="Shop Management" Height="1000" Width="1024"
+TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+Background="{DynamicResource MaterialDesignPaper}"
+TextElement.FontWeight="Medium"
+TextElement.FontSize="14"
+FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+Loaded="Window_Loaded"
+>
+
+    <materialDesign:Card>
+        <TabControl materialDesign:NavigationRailAssist.SelectionWidth="100" Style="{StaticResource MaterialDesignNavigationRailTabControl}" TabStripPlacement="Left" SelectedIndex="{Binding TabIndex}" SelectionChanged="TabControl_SelectionChanged" >
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Width="auto" Height="auto">
+                        <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="ViewDashboardOutline" />
+                        <TextBlock FontSize="12" HorizontalAlignment="Center" Text="Dashboard" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Frame Source="Dashboard.xaml"  ScrollViewer.VerticalScrollBarVisibility="Visible" 
+    ScrollViewer.CanContentScroll="True"  />
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Width="auto" Height="auto">
+                        <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="StoreOutline" />
+                        <TextBlock FontSize="12" HorizontalAlignment="Center" Text="Products" />
+                    </StackPanel>
+                </TabItem.Header>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <Frame Source="Product/ProductListPage.xaml"  />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Width="auto" Height="auto">
+                        <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="CategoryOutline" />
+                        <TextBlock FontSize="12" HorizontalAlignment="Center" Text="Categories" />
+                    </StackPanel>
+                </TabItem.Header>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <Frame Source="Category/CategoryListPage.xaml" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Width="auto" Height="auto">
+                        <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="Company" />
+                        <TextBlock FontSize="12" HorizontalAlignment="Center" Text="Mfrs." />
+                    </StackPanel>
+                </TabItem.Header>
+                <Frame Source="Manufacturer/ManufacturerListPage.xaml" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" />
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Width="auto" Height="auto">
+                        <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="PeopleOutline" />
+                        <TextBlock FontSize="12" HorizontalAlignment="Center" Text="Customers" />
+                    </StackPanel>
+                </TabItem.Header>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <Frame Source="Customer/CustomerListPage.xaml" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Width="auto" Height="auto">
+                        <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="ShoppingBasketOutline" />
+                        <TextBlock FontSize="12" HorizontalAlignment="Center" Text="Orders" />
+                    </StackPanel>
+                </TabItem.Header>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <Frame Source="Order/OrderListPage.xaml" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Width="auto" Height="auto">
+                        <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="FileReportOutline" />
+                        <TextBlock FontSize="12" HorizontalAlignment="Center" Text="Revenue" />
+                    </StackPanel>
+                </TabItem.Header>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <Frame Source="Report/RevenueReportPage.xaml" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Width="auto" Height="auto">
+                        <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="TrophyOutline" />
+                        <TextBlock FontSize="12" HorizontalAlignment="Center" Text="Best Seller" />
+                    </StackPanel>
+                </TabItem.Header>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <Frame Source="Report/BestSellerReportPage.xaml" />
+                </ScrollViewer>
+            </TabItem>
+
+        </TabControl>
+    </materialDesign:Card>
+</Window>

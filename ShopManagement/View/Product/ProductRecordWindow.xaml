@@ -1,0 +1,100 @@
+﻿<Window x:Class="ShopManagement.View.ProductRecordWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShopManagement"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        SizeToContent="Height" Width="400"
+>
+    <DockPanel VerticalAlignment="Top" Margin="20">
+        <StackPanel>
+            <TextBlock d:Text="Title" Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=Title}" Style="{StaticResource MaterialDesignHeadline6TextBlock}" Margin="0"></TextBlock>
+            <StackPanel Margin="0,16,0,0">
+                <TextBox
+                    x:Name="nameTextbox" Text="{Binding Name}" 
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="Name"
+                    AcceptsReturn="True"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                />
+            </StackPanel>
+            <StackPanel Margin="0,16,0,0">
+                <TextBox
+                    x:Name="imageTextbox" Text="{Binding Image}" 
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="Image"
+                    AcceptsReturn="True"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                />
+            </StackPanel>
+            <StackPanel Margin="0,16,0,0">
+                <ComboBox
+                    Name="categoryCombobox"
+                    SelectedValue="{Binding CategoryId}"
+                    SelectedValuePath="Id"
+                    materialDesign:HintAssist.Hint="Category"
+                    Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                >
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Name}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Margin="0,16,0,0">
+                <ComboBox
+                    Name="manufacturerCombobox"
+                    SelectedValue="{Binding ManufacturerId}"
+                    SelectedValuePath="Id"
+                    materialDesign:HintAssist.Hint="Manufacturer"
+                    Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                >
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Name}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Margin="0,16,0,0">
+                <TextBox
+                    x:Name="descriptionTextbox" Text="{Binding Description}" 
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="Description"
+                    AcceptsReturn="True"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                />
+            </StackPanel>
+            <StackPanel Margin="0,16,0,0">
+                <TextBox
+                    x:Name="priceTextbox" Text="{Binding Price}" 
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="Price"
+                    AcceptsReturn="True"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                />
+            </StackPanel>
+            <StackPanel Margin="0,16,0,0">
+                <TextBox
+                    x:Name="quantityTextbox" Text="{Binding Quantity}" 
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="Quantity"
+                    AcceptsReturn="True"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,24,0,0">
+                <Button IsCancel="True" x:Name="cancelButton" Click="cancelButton_Click" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignOutlinedButton}">Cancel</Button>
+                <Button IsDefault="True" x:Name="okButton" Click="okButton_Click" HorizontalAlignment="Right" Margin="10,0,0,0">Save</Button>
+            </StackPanel>
+        </StackPanel>
+
+    </DockPanel>
+</Window>

@@ -1,0 +1,28 @@
+﻿<Window x:Class="ShopManagement.ConfigWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShopManagement"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        SizeToContent="Height"
+        Title="Server settings" Width="360">
+    <DockPanel>
+        <StackPanel HorizontalAlignment="Stretch" Margin="16,16,16,20">
+            <TextBlock Text="Server settings" Margin="80,0,0,0" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+            <DockPanel Margin="0,12,0,0">
+                <Label DockPanel.Dock="Left" Width="80" Content="Server:" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0" Target="{Binding ElementName=serverTextbox}" Style="{StaticResource MaterialDesignLabel}" />
+                <TextBox x:Name="serverTextbox" Text="{Binding Server}" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Padding="5, 0, 5, 0" Height="30" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+            </DockPanel>
+            <DockPanel Margin="0,12,0,0">
+                <Label DockPanel.Dock="Left" Width="80" Content="Database:" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0" Target="{Binding ElementName=databaseTextbox}" Style="{StaticResource MaterialDesignLabel}"/>
+                <TextBox x:Name="databaseTextbox" Text="{Binding Database}" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Padding="5, 0, 5, 0" Height="30" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+            </DockPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button IsDefault="True" x:Name="saveButton" Content="Save" HorizontalAlignment="Left" Margin="80,20,0,0" Style="{StaticResource MaterialDesignRaisedButton}" Click="saveButton_Click"></Button>
+                <Button IsCancel="True" x:Name="cancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="16,20,0,0" Style="{StaticResource MaterialDesignOutlinedButton}"></Button>
+            </StackPanel>
+        </StackPanel>
+    </DockPanel>
+</Window>
